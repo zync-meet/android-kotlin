@@ -4,8 +4,9 @@ import com.zync.android.api.AuthService
 import com.zync.android.api.RetrofitClient
 import com.zync.android.models.LoginRequest
 
-class AuthRepository {
-    private val authService = RetrofitClient.instance.create(AuthService::class.java)
+class AuthRepository(
+    private val authService: AuthService = RetrofitClient.instance.create(AuthService::class.java)
+) {
     
     suspend fun login(email: String, pass: String): Boolean {
         return try {
